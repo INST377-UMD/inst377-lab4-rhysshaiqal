@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INST377 Lab 4</title>
+  <style>
+    /* Basic styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Styling for each section to make them look consistent */
+    .section {
+      border: 1px solid black; /* Adding a border */
+      padding: 20px; /* Some space inside the sections */
+      margin: 10px;  /* Some space between sections */
+    }
+
+    /* Just making buttons look decent */
+    button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main heading that we will change later in the Add Text section -->
+  <h1 id="header">Welcome to INST377 Lab 4</h1>
+
+  <!-- First section: Alert Me -->
+  <div class="section" id="alertMeSection">
+    <h2>Alert Me Section</h2>
+    <form id="alertForm">
+      <!-- Input to get the user's name -->
+      <label for="name">Enter your name:</label>
+      <input type="text" id="name" required> <!-- Required field -->
+      <button type="button" onclick="alertMe()">Alert Me</button> <!-- Triggers the alertMe() function -->
+    </form>
+  </div>
+
+  <!-- Second section: Change Color -->
+  <div class="section" id="changeColorSection">
+    <h2>Change Color Section</h2>
+    <!-- Button to change the background color -->
+    <button type="button" onclick="changeColor()">Change Color</button>
+  </div>
+
+  <!-- Third section: Text Tester -->
+  <div class="section" id="textTesterSection">
+    <h2>Text Tester Section</h2>
+    <form id="textTesterForm">
+      <!-- Input to test if there are any special characters -->
+      <label for="text">Enter text to validate:</label>
+      <input type="text" id="text">
+      <button type="button" onclick="validateText()">Validate Text</button> <!-- Triggers the validateText() function -->
+    </form>
+  </div>
+
+  <!-- Fourth section: Add Text -->
+  <div class="section" id="addTextSection">
+    <h2>Add Text Section</h2>
+    <!-- Button to add "Add Text" to the heading -->
+    <button type="button" onclick="addText()">Add Text</button>
+  </div>
+
+  <!-- Now for the JavaScript part where the magic happens -->
+  <script>
+    // Function for the Alert Me section
+    function alertMe() {
+      var name = document.getElementById("name").value; // Grab the name from the input
+      if (name) { // Make sure the user entered a name
+        alert("Hi " + name + "!"); // Show the alert with the name
+      }
+    }
+
+    // Function for the Change Color section
+    var isBlue = true; // To keep track of the current color
+    function changeColor() {
+      if (isBlue) {
+        document.body.style.backgroundColor = "green"; // Change to green if it's blue
+      } else {
+        document.body.style.backgroundColor = "blue"; // Change to blue if it's green
+      }
+      isBlue = !isBlue; // Flip the color state for next time
+    }
+
+    // Function for the Text Tester section
+    function validateText() {
+      var text = document.getElementById("text").value; // Grab the input text
+      var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|.<>\/?]+/; // Regex to check for special characters
+      if (validation.test(text)) { // If there are special characters
+        alert("Text contains special characters!"); // Alert the user
+      } else {
+        alert("Text is valid!"); // Otherwise, it's valid
+      }
+    }
+
+    // Function for the Add Text section
+    function addText() {
+      var header = document.getElementById("header"); // Get the heading
+      header.textContent += " Add Text"; // Append "Add Text" to the heading
+    }
+  </script>
+
+</body>
+</html>
